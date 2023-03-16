@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import {AuthActions} from "../store/AuthReducer"
+import {authActions} from "../store/AuthReducer"
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 
@@ -16,10 +16,12 @@ e.preventDefault();
 
 const enteredemail = emailRef.current.value;
 const enteredpassword = pswdRef.current.value;
-localStorage.setItem("userEmail" , enteredemail)
+localStorage.setItem("userEmail", enteredemail)
+
+console.log(enteredemail)
 
 fetch(
-"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCcDNxwm_rDXN068U1-nrHh3QKnnEGtZbY",{
+"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBjdchJzIQZxQHnxiqVg2rZChe_pSJ3sU8",{
     
     method: "Post",
     body:JSON.stringify({
@@ -34,6 +36,8 @@ fetch(
     }
 ).then((res)=>{
 	if(res.ok){
+    const replacedEmailId =enteredemail.replace("@", "").replace(".", "");
+     localStorage.setItem('email',replacedEmailId)
 		console.log("sign In is successfully")
 		return res.json();
 	}else {
@@ -48,7 +52,7 @@ fetch(
 	}
 })
 .then((data) => {
-  dispatch(AuthActions.login(data.idToken));
+  dispatch(authActions.login(data.idToken));
    console.log(data.idToken);
    history('/Welcome');
  })
@@ -57,7 +61,6 @@ fetch(
  });
 
 }
-
 
   return (
     <div>

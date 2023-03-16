@@ -22,7 +22,7 @@ import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 		return;
 	}
  fetch(
-	"https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCcDNxwm_rDXN068U1-nrHh3QKnnEGtZbY",{
+	"https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBjdchJzIQZxQHnxiqVg2rZChe_pSJ3sU8",{
 	
 method: "Post",
 body:JSON.stringify({

@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { useDispatch } from 'react-redux'
 import { sentboxAction } from '../store/SentSlice'
 import { useSelector } from 'react-redux'
@@ -6,8 +6,11 @@ import { useSelector } from 'react-redux'
 function Sentbox() {
     const emaildata = useSelector(state=>state.sent.sentbox);
     const dispatch = useDispatch();
-    fetch(`https://mail-box-75111-default-rtdb.firebaseio.com/emailData/${localStorage.getItem("email")}.json`).then((res)=>{
-        if(res.ok){
+    const submitHandler = () =>{
+    fetch(`https://mail-box-client-c37fc-default-rtdb.firebaseio.com/emailData/${localStorage.getItem("email")}/Sent.json`).then(
+        (res)=>{
+        
+    if(res.ok){
             return res.json()
         }else{
             return res.json().then((data)=>{
@@ -24,11 +27,12 @@ function Sentbox() {
             myarr.push({
                 id:i,
                 email:data[i].email,
+                subject:data[i].subject,
                 message:data[i].message
             })
         }
 
-        //console.log(data)
+        console.log(data)
         //console.log(myarr)
         dispatch(sentboxAction.setsenbox(myarr))
 
@@ -36,12 +40,17 @@ function Sentbox() {
     }).catch((err)=>{
         alert(err.message)
     })
+}
+useEffect(()=>{
+submitHandler();
+},[])
   return (
 
       <div>
     {emaildata.map((item,index)=>(
         <div key={index}>
             <p>Email:  {item.email}</p>
+            <p>Subject: {item.subject}</p>
             <p>Message: {item.message}</p>
             <hr/>
         </div>
@@ -51,4 +60,4 @@ function Sentbox() {
   )
 }
 
-export default Sentbox
+export default Sentbox;
