@@ -20,7 +20,7 @@ const handlerSubmit = (e) => {
 const emaildata = {email: enteredemail, message: enteredmessage, subject: entersubject}
  
 
-//console.log(emailData)
+console.log(emaildata)
 fetch(
    ` https://mail-box-client-c37fc-default-rtdb.firebaseio.com/emailData/${localStorage.getItem('email')}/Sent.json`,{
 

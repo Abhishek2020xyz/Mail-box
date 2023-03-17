@@ -9,6 +9,7 @@ const Header = (props) => {
 const dispatch = useDispatch();
 
 const show = useSelector(state => state.auth.isLogin)
+
 const logoutHandler = () =>{
   alert("Do you want Logout")
   dispatch(authActions.logout())
@@ -34,5 +35,17 @@ const logoutHandler = () =>{
     </div>
   )
 }
+
+// const Header = () =>{
+
+  
+//   return(
+//     <div>
+//       <Link to ="Sentbox" style={{margin:"5px"}}>SentBox</Link>
+//       <Link to ="ComposeMail" style={{margin:"5px"}}>ComposeMail</Link>
+//       <Link to ="Inbox">Inbox</Link>
+//     </div>
+//   )
+// }
 
 export default Header;

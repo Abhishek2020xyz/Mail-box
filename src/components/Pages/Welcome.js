@@ -1,12 +1,16 @@
 import EmailForm from "./EmailForm";
-const welcome = () =>{
-return(
-<div>
 
-<p> welcome Email box </p>
-  <EmailForm/>
-
+function Welcome() {
+  return (
+   <div>
+     <div>
+      <h4>Welcome to mail box client</h4>
     </div>
-)
+    <hr/>
+    <EmailForm/>
+   </div>
+
+  )
 }
-export default welcome;
+
+export default Welcome

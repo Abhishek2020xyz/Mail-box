@@ -5,7 +5,7 @@ import MailSlice from "./MailSlice";
 import sentboxslice from "./SentSlice";
 
 const store = configureStore({
-  reducer: { auth: AuthReducer,
+  reducer: { auth: AuthReducer.reducer,
              mail:MailSlice.reducer,
              sent:sentboxslice.reducer,
              in:inboxslice.reducer  },

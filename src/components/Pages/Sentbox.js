@@ -7,7 +7,8 @@ function Sentbox() {
     const emaildata = useSelector(state=>state.sent.sentbox);
     const dispatch = useDispatch();
     const submitHandler = () =>{
-    fetch(`https://mail-box-client-c37fc-default-rtdb.firebaseio.com/emailData/${localStorage.getItem("email")}/Sent.json`).then(
+    fetch(`https://mail-box-client-c37fc-default-rtdb.firebaseio.com/emailData/${localStorage.getItem("email")}/Sent.json`)
+    .then(
         (res)=>{
         
     if(res.ok){
