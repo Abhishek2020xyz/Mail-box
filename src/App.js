@@ -10,7 +10,7 @@ import Welcome from './components/Pages/Welcome';
 
 function App() {
   return (
-    <div >
+    <div style={{backgroundColor: 'pink'}}>
       
       <Header/>
      <Routes>
