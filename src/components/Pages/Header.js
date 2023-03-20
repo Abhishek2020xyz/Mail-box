@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from '../store/AuthReducer';
 
 const Header = (props) => {
+const Sentbox = useSelector(state=>state.sent.sentbox);
+const Inbox = useSelector(state=>state.in.inbox)
 const dispatch = useDispatch();
 
 const show = useSelector(state => state.auth.isLogin)
@@ -22,10 +24,10 @@ const logoutHandler = () =>{
       <Link to='/Welcome'>Compose</Link></Button>}
 
       {show && <Button variant='outline-primary' style={{margin:'20px'}}>
-      <Link to='/Inbox'>Inbox</Link></Button>}
+      <Link to='/Inbox'>Inbox<sup>{Inbox.length}</sup></Link></Button>}
 
       {show && <Button variant='outline-primary' style={{margin:'20px'}}>
-      <Link to='sentbox'>Sent Box</Link></Button>}
+      <Link to='sentbox'>Sent Box<sup>{Sentbox.length}</sup></Link></Button>}
 
        {show && <div style={{margin:'20px'}}><Link to="/" onClick={logoutHandler}>
         <Button variant="outline-danger">Logout</Button></Link>
